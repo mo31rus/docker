@@ -1,0 +1,15 @@
+version: '3'
+
+networks:
+  mo_net:
+    name: mo_net
+    
+services:
+  kms_mo:
+    image: mikolatero/vlmcsd
+    container_name: kms_mo
+    restart: always
+    networks:
+      - mo_net
+    ports:
+      - 1688:1688
