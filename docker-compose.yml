@@ -1,0 +1,21 @@
+version: '2.1'
+
+networks:
+  mo_net:
+    name: mo_net
+ 
+services:
+  fb:
+    container_name: fb
+    restart: always
+    image: jacobalberty/firebird:2.5.9-sc
+    networks:
+      - mo_net
+    ports:
+      - 3050:3050
+      - 3070:3070
+    volumes:
+      - /mo/docker/volume/fb:/firebird
+    environment:
+      - TZ=Europe/Moscow
+      - ISC_PASSWORD=masterkey
