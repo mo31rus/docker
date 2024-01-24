@@ -5,8 +5,8 @@ networks:
     name: mo_net
  
 services:
-  fb:
-    container_name: fb
+  firebird:
+    container_name: firebird
     restart: always
     image: jacobalberty/firebird:2.5.9-sc
     networks:
@@ -15,7 +15,7 @@ services:
       - 3050:3050
       - 3070:3070
     volumes:
-      - /mo/docker/volume/fb:/firebird
+      - /mirokon/docker/volume/firebird:/firebird
     environment:
       - TZ=Europe/Moscow
       - ISC_PASSWORD=masterkey
