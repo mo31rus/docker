@@ -27,6 +27,6 @@ volumes:
     driver_opts:
         type: nfs
         o: nfsvers=4,addr=10.100.10.253,rw
-        device: ":/export/backup-fb"
+        device: "/export/backup-fb"
     
   
