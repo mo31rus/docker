@@ -3,6 +3,7 @@ version: '2.1'
 networks:
   mo_net:
     name: mo_net
+    external: true
  
 services:
   firebird:
