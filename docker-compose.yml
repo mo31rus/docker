@@ -17,13 +17,13 @@ services:
       - 3070:3070
     volumes:
       - /mirokon/docker/volume/firebird:/firebird
-      - backup:/backup 
+      - backup-fb:/backup 
     environment:
       - TZ=Europe/Moscow
       - ISC_PASSWORD=masterkey
 
 volumes:
-  backup:
+  backup-fb:
     driver: local
     driver_opts:
         type: nfs
