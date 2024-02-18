@@ -3,6 +3,7 @@ version: '3'
 networks:
   mo_net:
     name: mo_net
+    external: true
     
 services:
   kms_mo:
