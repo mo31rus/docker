@@ -27,7 +27,7 @@ volumes:
     driver: local
     driver_opts:
         type: nfs
-        o: nfsvers=4,addr=10.100.10.253,rw
+        o: nfsvers=4,addr=10.100.10.253,rw,subtree_check,insecure
         device: ":/export/backup-fb"
     
   
