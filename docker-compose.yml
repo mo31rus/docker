@@ -17,13 +17,7 @@ services:
       - 3070:3070
     volumes:
       - /mirokon/docker/volume/firebird:/firebird
-      - backup-fb:/backup 
+      - /mnt/disk/backup/firebird:/backup 
     environment:
       - TZ=Europe/Moscow
       - ISC_PASSWORD=masterkey
-
-volumes:
-  backup-fb:
-    external: true
-    
-  
