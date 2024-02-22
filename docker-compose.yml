@@ -20,3 +20,5 @@ services:
       - /mnt/disk/backup/firebird:/backup 
     environment:
       - TZ=Europe/Moscow
+    env_file:
+      - stack.env
