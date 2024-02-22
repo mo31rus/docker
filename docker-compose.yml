@@ -20,4 +20,3 @@ services:
       - /mnt/disk/backup/firebird:/backup 
     environment:
       - TZ=Europe/Moscow
-      - ISC_PASSWORD=masterkey
