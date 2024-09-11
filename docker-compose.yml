@@ -1,23 +1,40 @@
-version: '2.1'
-
 networks:
-  mo_net:
-    name: mo_net
+  fb_net:
+    name: ${NETWORK_NAME}
     external: true
- 
+
+volumes:
+  firebird:
+  firebird-backup:
+
 services:
   firebird:
     container_name: firebird
     restart: always
     image: jacobalberty/firebird:2.5.9-sc
     networks:
-      - mo_net
-    ports:
-      - 3050:3050
-      - 3070:3070
-    volumes:
-      - /mirokon/docker/volume/firebird:/firebird
-    environment:
-      - TZ=Europe/Moscow
+      - fb_net
     env_file:
       - stack.env
+    ports:
+      - ${FIREBIRD_PORT}:3050
+      - ${FIREBIRD_PORT_AUX}:3070
+    volumes:
+      - firebird:/firebird
+    environment:
+      - TZ=Europe/Moscow
+      - RemoteAuxPort=3070
+      - ISC_PASSWORD=masterkey
+
+  backup:
+    env_file:
+      - stack.env
+    container_name: backup
+    restart: always
+    build:
+      context: backup
+      dockerfile: Dockerfile
+    volumes:
+      - firebird-backup:/backup
+    networks:
+      - fb_net
